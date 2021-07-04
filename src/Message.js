@@ -1,17 +1,20 @@
 import "./Message.css";
 import React from "react";
-import { Card, CardContent, Typography } from "@material-ui/core";
+var moment = require('moment');
 
 export default function Message(props) {
+	const getLastMessageTimestamp = () => {
+		if (props.message.timestamp) {
+			const messageTimestamp = props.message.timestamp
+		return (
+			<p className="message_timestamp">{moment(messageTimestamp.seconds * 1000).fromNow()}</p>	
+		)
+		}
+	}
+
 	return (
 		<div className="Message">
-			{/* <Card className="message_card">
-				<CardContent classname="message_cardContent">
-					<Typography>
-						{props.message.username} : {props.message.message}
-					</Typography>
-				</CardContent>
-			</Card> */}
+			{getLastMessageTimestamp()}
 			<p className="message_text">{props.message.username} : {props.message.message}</p>
 		</div>
 	)

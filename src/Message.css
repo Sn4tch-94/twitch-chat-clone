@@ -6,3 +6,9 @@
 	/* color: #fff; */
 	color: black;
 }
+
+.message_timestamp {
+	font-size: 0.7rem;
+	color: grey;
+	font-style: italic;
+}

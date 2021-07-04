@@ -5,6 +5,7 @@ import firebase from "firebase"
 import { Button, FormControl, TextField, Grid } from "@material-ui/core"
 import Message from './Message'
 
+
 export default function Chat(props) {
 	const [input, setInput] = useState("")
 	const [messages, setMessages] = useState([])
@@ -17,10 +18,12 @@ export default function Chat(props) {
 
 	useEffect(() => {
 		db.collection('messages').orderBy('timestamp', 'asc').onSnapshot(snapshot => {
-			setMessages(snapshot.docs.map(doc => ({
-				id: doc.id,
-				message: doc.data()
-			})))
+			if (snapshot.size) {
+				setMessages(snapshot.docs.map(doc => ({
+					id: doc.id,
+					message: doc.data()
+				})))
+			}
 		})
 	}, [])
 
@@ -47,7 +50,7 @@ export default function Chat(props) {
 			<form className="chat_form">
 				<FormControl className="chat_formControl" fullWidth>
 					<Grid className="chat_grid">
-						<TextField classname="chat_textField" label="Envoyer un message" fullWidth multiline rows={1} variant="filled" value={input} onChange={e => setInput(e.target.value)}/>
+						<TextField className="chat_textField" label="Envoyer un message" fullWidth multiline rows={1} variant="filled" value={input} onChange={e => setInput(e.target.value)}/>
 					</Grid>
 					<Grid className="chat_grid">	
 						<Button className="chat_button" variant="contained" color="primary" onClick={sendMessage}>Chat</Button>
