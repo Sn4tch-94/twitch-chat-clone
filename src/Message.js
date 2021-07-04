@@ -5,13 +5,14 @@ import { Card, CardContent, Typography } from "@material-ui/core";
 export default function Message(props) {
 	return (
 		<div className="Message">
-			<Card className="message_card">
+			{/* <Card className="message_card">
 				<CardContent classname="message_cardContent">
 					<Typography>
 						{props.message.username} : {props.message.message}
 					</Typography>
 				</CardContent>
-			</Card>
+			</Card> */}
+			<p className="message_text">{props.message.username} : {props.message.message}</p>
 		</div>
 	)
 }
