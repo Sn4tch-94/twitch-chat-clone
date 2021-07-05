@@ -1,7 +1,7 @@
 import './Chat.css'
 import React, {useState, useEffect, useRef} from "react";
-import db from "./firebase"
-import firebase from "firebase"
+import firebase from 'firebase/app'
+import { db } from "./firebase"
 import { Button, FormControl, TextField, Grid } from "@material-ui/core"
 import Message from './Message'
 
@@ -39,20 +39,22 @@ export default function Chat(props) {
 		setInput('')
 	}
 
-	const generateRandomColors = () => {
-		for (let i = 0; i < 50; i++) {
+	function generateRandomColors() {
+		for (let i = 0; i < 10; i++) {
 			let randColor = "#" + ((1<<24)*Math.random() | 0).toString(16)
 			randomColors.push(randColor)
 		}
+		console.log(randomColors)
 	}
 
 	return (
 		<div className="Chat">
 			<div className="chat_messages">
 				{
+					randomColors ?
 					messages.map(({id, message}) => (
-						<Message key={id} message={message} username={props.username} colors={randomColors}/>
-					))
+						<Message key={id} message={message} colors={randomColors}/>
+					)) : null
 				}
 				<AlwaysScrollToBottom/>
 			</div>

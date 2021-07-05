@@ -14,9 +14,11 @@ export default function Message(props) {
 
 	const getColor = () => {
 		let sumChars = 0
+		console.log(props)
 		for (let i = 0; i < props.message.username.length; i++) {
 			sumChars += props.message.username.charCodeAt(i)
 		}
+		console.log(props.colors[sumChars % props.colors.length])
 		return (props.colors[sumChars % props.colors.length])
 	}
 
