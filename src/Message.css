@@ -2,6 +2,11 @@
 	margin: 0.5rem;
 }
 
+.message_container {
+	display: flex;
+	flex-direction: row;
+}
+
 .message_text {
 	/* color: #fff; */
 	color: black;

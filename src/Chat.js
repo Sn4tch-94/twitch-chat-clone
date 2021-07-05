@@ -9,6 +9,7 @@ import Message from './Message'
 export default function Chat(props) {
 	const [input, setInput] = useState("")
 	const [messages, setMessages] = useState([])
+	const [randomColors, setRandomColors] = useState([])
 
 	const AlwaysScrollToBottom = () => {
 		const elementRef = useRef();
@@ -25,6 +26,7 @@ export default function Chat(props) {
 				})))
 			}
 		})
+		generateRandomColors()
 	}, [])
 
 	const sendMessage = (e) => {
@@ -37,12 +39,19 @@ export default function Chat(props) {
 		setInput('')
 	}
 
+	const generateRandomColors = () => {
+		for (let i = 0; i < 50; i++) {
+			let randColor = "#" + ((1<<24)*Math.random() | 0).toString(16)
+			randomColors.push(randColor)
+		}
+	}
+
 	return (
 		<div className="Chat">
 			<div className="chat_messages">
 				{
 					messages.map(({id, message}) => (
-						<Message key={id} message={message} username={props.username}/>
+						<Message key={id} message={message} username={props.username} colors={randomColors}/>
 					))
 				}
 				<AlwaysScrollToBottom/>
