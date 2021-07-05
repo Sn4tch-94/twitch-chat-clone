@@ -40,7 +40,7 @@ export default function Chat(props) {
 	}
 
 	function generateRandomColors() {
-		for (let i = 0; i < 10; i++) {
+		for (let i = 0; i < 50; i++) {
 			let randColor = "#" + ((1<<24)*Math.random() | 0).toString(16)
 			randomColors.push(randColor)
 		}
@@ -53,7 +53,7 @@ export default function Chat(props) {
 				{
 					randomColors ?
 					messages.map(({id, message}) => (
-						<Message key={id} message={message} colors={randomColors}/>
+						<Message key={id} message={message} colors={randomColors} username={props.username} id={id}/>
 					)) : null
 				}
 				<AlwaysScrollToBottom/>
