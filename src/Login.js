@@ -12,7 +12,7 @@ export default function Login(props) {
 
 	return (
 		<div>
-			<p>Bienvenue ! Veuillez vous connecter</p>
+			<h2>Bienvenue ! Veuillez vous connecter</h2>
 			<form className="chat_form">
 				<FormControl className="chat_formControl" fullWidth>
 					<Grid className="chat_grid">

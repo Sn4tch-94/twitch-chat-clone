@@ -9,7 +9,7 @@ import Message from './Message'
 export default function Chat(props) {
 	const [input, setInput] = useState("")
 	const [messages, setMessages] = useState([])
-	const [randomColors, setRandomColors] = useState([])
+	const [randomColors] = useState([])
 
 	const AlwaysScrollToBottom = () => {
 		const elementRef = useRef();
@@ -44,7 +44,6 @@ export default function Chat(props) {
 			let randColor = "#" + ((1<<24)*Math.random() | 0).toString(16)
 			randomColors.push(randColor)
 		}
-		console.log(randomColors)
 	}
 
 	return (
@@ -61,7 +60,7 @@ export default function Chat(props) {
 			<form className="chat_form">
 				<FormControl className="chat_formControl" fullWidth>
 					<Grid className="chat_grid">
-						<TextField className="chat_textField" label="Envoyer un message" fullWidth multiline rows={1} variant="filled" value={input} onChange={e => setInput(e.target.value)}/>
+						<TextField className="chat_textField" label="Envoyer un message" fullWidth multiline rows={2} variant="filled" value={input} onChange={e => setInput(e.target.value)}/>
 					</Grid>
 					<Grid className="chat_grid">	
 						<Button className="chat_button" variant="contained" color="primary" onClick={sendMessage}>Chat</Button>
